@@ -2,13 +2,13 @@ let candy;
 d3.csv('candy-data.csv', d=>{
 	return {
 	  ...d, // spread operator
-	  winpercent: +d.winpercent, // convert to integer
+	  winpercent: +d.winpercent, // convert to number
 	}
   }).then(data=>{
 	  console.log('candy', data);
 	  candy = data;
-      candy = candy.sort(function(a,b) { return b.winpercent - a.winpercent;});
-      candy = candy.slice(0,10);
+      candy = candy.sort(function(a,b) { return b.winpercent - a.winpercent;}); //sorts the data in descending popularity
+      candy = candy.slice(0,10); //picks out top ten most popular candies
 	  console.log('candy', candy);
 
 	  d3.select('.popular').text("The most popular candy is Reeses Peanut Butter Cup");
